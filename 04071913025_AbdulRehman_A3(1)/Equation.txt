@@ -1,0 +1,6 @@
+[an apple
+(a fruit (
+of green or red color)
+{not a computer}
+)
+]
