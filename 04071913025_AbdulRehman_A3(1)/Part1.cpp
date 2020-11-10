@@ -65,27 +65,27 @@ bool balanceCheck(const char* filename) {
 	if (thefile.is_open()) {
 		while (thefile.good()) {
 			thefile.get(c);
-			if (thefile.gcount() == 0)
-				break;
-			if (c == '(' || c == '{' || c == '[')
-				s.push(c);
-			else if (c == ')') {
-				if (s.top() == '(')
-					s.pop();
-				else
-					return false;
-			}
-			else if (c == '}') {
-				if (s.top() == '{')
-					s.pop();
-				else
-					return false;
-			}
-			else if (c == ']') {
-				if (s.top() == '[')
-					s.pop();
-				else
-					return false;
+			if (thefile.gcount() > 0) {
+				if (c == '(' || c == '{' || c == '[')
+					s.push(c);
+				else if (c == ')') {
+					if (s.top() == '(')
+						s.pop();
+					else
+						return false;
+				}
+				else if (c == '}') {
+					if (s.top() == '{')
+						s.pop();
+					else
+						return false;
+				}
+				else if (c == ']') {
+					if (s.top() == '[')
+						s.pop();
+					else
+						return false;
+				}
 			}
 		}
 		return s.empty();
